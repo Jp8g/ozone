@@ -1,0 +1,6 @@
+[submodule "external/dryad"]
+	path = external/dryad
+	url = https://github.com/Jp8g/Dryad
+[submodule "external/kipcorn"]
+	path = external/kipcorn
+	url = https://github.com/Jp8g/Kipcorn

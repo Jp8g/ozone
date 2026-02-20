@@ -1,0 +1,212 @@
+[
+  {
+    "file": "modules/window/window.c",
+    "arguments": [
+      "gcc",
+      "-Wall",
+      "-Wextra",
+      "-fPIC",
+      "-O3",
+      "-MMD",
+      "-MP",
+      "-Iinclude",
+      "-Iexternal/dryad/include",
+      "-Iexternal/kipcorn/include",
+      "-Iexternal/kipcorn/external",
+      "-c",
+      "modules/window/window.c",
+      "-o",
+      "build/modules/window/window.o"
+    ],
+    "directory": "/home/jpeg/Projects/Ozone",
+    "output": "build/modules/window/window.o"
+  },
+  {
+    "file": "modules/audio/mixer.c",
+    "arguments": [
+      "gcc",
+      "-Wall",
+      "-Wextra",
+      "-fPIC",
+      "-O3",
+      "-MMD",
+      "-MP",
+      "-Iinclude",
+      "-Iexternal/dryad/include",
+      "-Iexternal/kipcorn/include",
+      "-Iexternal/kipcorn/external",
+      "-c",
+      "modules/audio/mixer.c",
+      "-o",
+      "build/modules/audio/mixer.o"
+    ],
+    "directory": "/home/jpeg/Projects/Ozone",
+    "output": "build/modules/audio/mixer.o"
+  },
+  {
+    "file": "modules/audio/audio.c",
+    "arguments": [
+      "gcc",
+      "-Wall",
+      "-Wextra",
+      "-fPIC",
+      "-O3",
+      "-MMD",
+      "-MP",
+      "-Iinclude",
+      "-Iexternal/dryad/include",
+      "-Iexternal/kipcorn/include",
+      "-Iexternal/kipcorn/external",
+      "-c",
+      "modules/audio/audio.c",
+      "-o",
+      "build/modules/audio/audio.o"
+    ],
+    "directory": "/home/jpeg/Projects/Ozone",
+    "output": "build/modules/audio/audio.o"
+  },
+  {
+    "file": "modules/graphics/graphics.c",
+    "arguments": [
+      "gcc",
+      "-Wall",
+      "-Wextra",
+      "-fPIC",
+      "-O3",
+      "-MMD",
+      "-MP",
+      "-Iinclude",
+      "-Iexternal/dryad/include",
+      "-Iexternal/kipcorn/include",
+      "-Iexternal/kipcorn/external",
+      "-c",
+      "modules/graphics/graphics.c",
+      "-o",
+      "build/modules/graphics/graphics.o"
+    ],
+    "directory": "/home/jpeg/Projects/Ozone",
+    "output": "build/modules/graphics/graphics.o"
+  },
+  {
+    "file": "src/dryad.c",
+    "arguments": [
+      "gcc",
+      "-std=c99",
+      "-Wall",
+      "-Wextra",
+      "-O3",
+      "-fPIC",
+      "-DDRYAD_ALSA",
+      "-Iinclude",
+      "-MMD",
+      "-MP",
+      "-c",
+      "src/dryad.c",
+      "-o",
+      "build/src/dryad.o"
+    ],
+    "directory": "/home/jpeg/Projects/Ozone/external/dryad",
+    "output": "build/src/dryad.o"
+  },
+  {
+    "file": "src/kipcorn.c",
+    "arguments": [
+      "gcc",
+      "-std=c99",
+      "-Wall",
+      "-O3",
+      "-fPIC",
+      "-Iinclude",
+      "-Iexternal",
+      "-MMD",
+      "-MP",
+      "-c",
+      "src/kipcorn.c",
+      "-o",
+      "build/src/kipcorn.o"
+    ],
+    "directory": "/home/jpeg/Projects/Ozone/external/kipcorn",
+    "output": "build/src/kipcorn.o"
+  },
+  {
+    "file": "external/wlr-layer-shell-unstable-v1.c",
+    "arguments": [
+      "gcc",
+      "-std=c99",
+      "-Wall",
+      "-O3",
+      "-fPIC",
+      "-Iinclude",
+      "-Iexternal",
+      "-MMD",
+      "-MP",
+      "-c",
+      "external/wlr-layer-shell-unstable-v1.c",
+      "-o",
+      "build/external/wlr-layer-shell-unstable-v1.o"
+    ],
+    "directory": "/home/jpeg/Projects/Ozone/external/kipcorn",
+    "output": "build/external/wlr-layer-shell-unstable-v1.o"
+  },
+  {
+    "file": "external/xdg-shell.c",
+    "arguments": [
+      "gcc",
+      "-std=c99",
+      "-Wall",
+      "-O3",
+      "-fPIC",
+      "-Iinclude",
+      "-Iexternal",
+      "-MMD",
+      "-MP",
+      "-c",
+      "external/xdg-shell.c",
+      "-o",
+      "build/external/xdg-shell.o"
+    ],
+    "directory": "/home/jpeg/Projects/Ozone/external/kipcorn",
+    "output": "build/external/xdg-shell.o"
+  },
+  {
+    "file": "external/xdg-decoration-unstable-v1.c",
+    "arguments": [
+      "gcc",
+      "-std=c99",
+      "-Wall",
+      "-O3",
+      "-fPIC",
+      "-Iinclude",
+      "-Iexternal",
+      "-MMD",
+      "-MP",
+      "-c",
+      "external/xdg-decoration-unstable-v1.c",
+      "-o",
+      "build/external/xdg-decoration-unstable-v1.o"
+    ],
+    "directory": "/home/jpeg/Projects/Ozone/external/kipcorn",
+    "output": "build/external/xdg-decoration-unstable-v1.o"
+  },
+  {
+    "file": "test.c",
+    "arguments": [
+      "gcc",
+      "test.c",
+      "-Wall",
+      "-Wextra",
+      "-fPIC",
+      "-O3",
+      "-MMD",
+      "-MP",
+      "-Iinclude",
+      "-Iexternal/dryad/include",
+      "-Iexternal/kipcorn/include",
+      "-Iexternal/kipcorn/external",
+      "-o",
+      "ozone_test"
+    ],
+    "directory": "/home/jpeg/Projects/Ozone",
+    "output": "ozone_test"
+  }
+]
