@@ -1,0 +1,1 @@
+long oz_get_thread_count();

@@ -1,93 +1,5 @@
 [
   {
-    "file": "modules/window/window.c",
-    "arguments": [
-      "gcc",
-      "-Wall",
-      "-Wextra",
-      "-fPIC",
-      "-O3",
-      "-MMD",
-      "-MP",
-      "-Iinclude",
-      "-Iexternal/dryad/include",
-      "-Iexternal/kipcorn/include",
-      "-Iexternal/kipcorn/external",
-      "-c",
-      "modules/window/window.c",
-      "-o",
-      "build/modules/window/window.o"
-    ],
-    "directory": "/home/jpeg/Projects/Ozone",
-    "output": "build/modules/window/window.o"
-  },
-  {
-    "file": "modules/audio/mixer.c",
-    "arguments": [
-      "gcc",
-      "-Wall",
-      "-Wextra",
-      "-fPIC",
-      "-O3",
-      "-MMD",
-      "-MP",
-      "-Iinclude",
-      "-Iexternal/dryad/include",
-      "-Iexternal/kipcorn/include",
-      "-Iexternal/kipcorn/external",
-      "-c",
-      "modules/audio/mixer.c",
-      "-o",
-      "build/modules/audio/mixer.o"
-    ],
-    "directory": "/home/jpeg/Projects/Ozone",
-    "output": "build/modules/audio/mixer.o"
-  },
-  {
-    "file": "modules/audio/audio.c",
-    "arguments": [
-      "gcc",
-      "-Wall",
-      "-Wextra",
-      "-fPIC",
-      "-O3",
-      "-MMD",
-      "-MP",
-      "-Iinclude",
-      "-Iexternal/dryad/include",
-      "-Iexternal/kipcorn/include",
-      "-Iexternal/kipcorn/external",
-      "-c",
-      "modules/audio/audio.c",
-      "-o",
-      "build/modules/audio/audio.o"
-    ],
-    "directory": "/home/jpeg/Projects/Ozone",
-    "output": "build/modules/audio/audio.o"
-  },
-  {
-    "file": "modules/graphics/graphics.c",
-    "arguments": [
-      "gcc",
-      "-Wall",
-      "-Wextra",
-      "-fPIC",
-      "-O3",
-      "-MMD",
-      "-MP",
-      "-Iinclude",
-      "-Iexternal/dryad/include",
-      "-Iexternal/kipcorn/include",
-      "-Iexternal/kipcorn/external",
-      "-c",
-      "modules/graphics/graphics.c",
-      "-o",
-      "build/modules/graphics/graphics.o"
-    ],
-    "directory": "/home/jpeg/Projects/Ozone",
-    "output": "build/modules/graphics/graphics.o"
-  },
-  {
     "file": "src/dryad.c",
     "arguments": [
       "gcc",
@@ -95,7 +7,6 @@
       "-Wall",
       "-Wextra",
       "-O3",
-      "-fPIC",
       "-DDRYAD_ALSA",
       "-Iinclude",
       "-MMD",
@@ -105,7 +16,7 @@
       "-o",
       "build/src/dryad.o"
     ],
-    "directory": "/home/jpeg/Projects/Ozone/external/dryad",
+    "directory": "/home/jpeg/Projects/dryad",
     "output": "build/src/dryad.o"
   },
   {
@@ -115,7 +26,6 @@
       "-std=c99",
       "-Wall",
       "-O3",
-      "-fPIC",
       "-Iinclude",
       "-Iexternal",
       "-MMD",
@@ -125,7 +35,7 @@
       "-o",
       "build/src/kipcorn.o"
     ],
-    "directory": "/home/jpeg/Projects/Ozone/external/kipcorn",
+    "directory": "/home/jpeg/Projects/kipcorn",
     "output": "build/src/kipcorn.o"
   },
   {
@@ -135,7 +45,6 @@
       "-std=c99",
       "-Wall",
       "-O3",
-      "-fPIC",
       "-Iinclude",
       "-Iexternal",
       "-MMD",
@@ -145,7 +54,7 @@
       "-o",
       "build/external/wlr-layer-shell-unstable-v1.o"
     ],
-    "directory": "/home/jpeg/Projects/Ozone/external/kipcorn",
+    "directory": "/home/jpeg/Projects/kipcorn",
     "output": "build/external/wlr-layer-shell-unstable-v1.o"
   },
   {
@@ -155,7 +64,6 @@
       "-std=c99",
       "-Wall",
       "-O3",
-      "-fPIC",
       "-Iinclude",
       "-Iexternal",
       "-MMD",
@@ -165,7 +73,7 @@
       "-o",
       "build/external/xdg-shell.o"
     ],
-    "directory": "/home/jpeg/Projects/Ozone/external/kipcorn",
+    "directory": "/home/jpeg/Projects/kipcorn",
     "output": "build/external/xdg-shell.o"
   },
   {
@@ -175,7 +83,6 @@
       "-std=c99",
       "-Wall",
       "-O3",
-      "-fPIC",
       "-Iinclude",
       "-Iexternal",
       "-MMD",
@@ -185,28 +92,121 @@
       "-o",
       "build/external/xdg-decoration-unstable-v1.o"
     ],
-    "directory": "/home/jpeg/Projects/Ozone/external/kipcorn",
+    "directory": "/home/jpeg/Projects/kipcorn",
     "output": "build/external/xdg-decoration-unstable-v1.o"
   },
   {
-    "file": "test.c",
+    "file": "modules/ozone/task/task/task.c",
     "arguments": [
       "gcc",
-      "test.c",
+      "-Imodules",
+      "-I/home/jpeg/Projects/dryad/include",
+      "-I/home/jpeg/Projects/kipcorn/include",
+      "-I/home/jpeg/Projects/kipcorn/external",
       "-Wall",
       "-Wextra",
-      "-fPIC",
       "-O3",
-      "-MMD",
-      "-MP",
-      "-Iinclude",
-      "-Iexternal/dryad/include",
-      "-Iexternal/kipcorn/include",
-      "-Iexternal/kipcorn/external",
+      "-c",
+      "modules/ozone/task/task/task.c",
       "-o",
-      "ozone_test"
+      "build/modules/ozone/task/task/task.o"
     ],
-    "directory": "/home/jpeg/Projects/Ozone",
-    "output": "ozone_test"
+    "directory": "/home/jpeg/Projects/ozone",
+    "output": "build/modules/ozone/task/task/task.o"
+  },
+  {
+    "file": "modules/ozone/window/src/window.c",
+    "arguments": [
+      "gcc",
+      "-Imodules",
+      "-I/home/jpeg/Projects/dryad/include",
+      "-I/home/jpeg/Projects/kipcorn/include",
+      "-I/home/jpeg/Projects/kipcorn/external",
+      "-Wall",
+      "-Wextra",
+      "-O3",
+      "-c",
+      "modules/ozone/window/src/window.c",
+      "-o",
+      "build/modules/ozone/window/src/window.o"
+    ],
+    "directory": "/home/jpeg/Projects/ozone",
+    "output": "build/modules/ozone/window/src/window.o"
+  },
+  {
+    "file": "modules/ozone/audio/mixer/src/mixer.c",
+    "arguments": [
+      "gcc",
+      "-Imodules",
+      "-I/home/jpeg/Projects/dryad/include",
+      "-I/home/jpeg/Projects/kipcorn/include",
+      "-I/home/jpeg/Projects/kipcorn/external",
+      "-Wall",
+      "-Wextra",
+      "-O3",
+      "-c",
+      "modules/ozone/audio/mixer/src/mixer.c",
+      "-o",
+      "build/modules/ozone/audio/mixer/src/mixer.o"
+    ],
+    "directory": "/home/jpeg/Projects/ozone",
+    "output": "build/modules/ozone/audio/mixer/src/mixer.o"
+  },
+  {
+    "file": "modules/ozone/audio/stream/src/stream.c",
+    "arguments": [
+      "gcc",
+      "-Imodules",
+      "-I/home/jpeg/Projects/dryad/include",
+      "-I/home/jpeg/Projects/kipcorn/include",
+      "-I/home/jpeg/Projects/kipcorn/external",
+      "-Wall",
+      "-Wextra",
+      "-O3",
+      "-c",
+      "modules/ozone/audio/stream/src/stream.c",
+      "-o",
+      "build/modules/ozone/audio/stream/src/stream.o"
+    ],
+    "directory": "/home/jpeg/Projects/ozone",
+    "output": "build/modules/ozone/audio/stream/src/stream.o"
+  },
+  {
+    "file": "modules/ozone/os/thread/src/thread.c",
+    "arguments": [
+      "gcc",
+      "-Imodules",
+      "-I/home/jpeg/Projects/dryad/include",
+      "-I/home/jpeg/Projects/kipcorn/include",
+      "-I/home/jpeg/Projects/kipcorn/external",
+      "-Wall",
+      "-Wextra",
+      "-O3",
+      "-c",
+      "modules/ozone/os/thread/src/thread.c",
+      "-o",
+      "build/modules/ozone/os/thread/src/thread.o"
+    ],
+    "directory": "/home/jpeg/Projects/ozone",
+    "output": "build/modules/ozone/os/thread/src/thread.o"
+  },
+  {
+    "file": "modules/ozone/gpu/gfx/src/gfx.c",
+    "arguments": [
+      "gcc",
+      "-Imodules",
+      "-I/home/jpeg/Projects/dryad/include",
+      "-I/home/jpeg/Projects/kipcorn/include",
+      "-I/home/jpeg/Projects/kipcorn/external",
+      "-Wall",
+      "-Wextra",
+      "-O3",
+      "-c",
+      "modules/ozone/gpu/gfx/src/gfx.c",
+      "-o",
+      "build/modules/ozone/gpu/gfx/src/gfx.o"
+    ],
+    "directory": "/home/jpeg/Projects/ozone",
+    "output": "build/modules/ozone/gpu/gfx/src/gfx.o"
   }
 ]

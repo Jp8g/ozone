@@ -1,68 +1,65 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -fPIC -O3 -MMD -MP
-LIB_NAME = libozone.a
+
+CFLAGS = -Wall -Wextra -O3 -DOZONE_ENABLE_VK_VALIDATION=1
+NAME = libozone.a
+
+INC_FLAGS = -Imodules
+
+DRYAD_BACKEND ?= ALSA
+KIPCORN_OPENGL ?= 0
 
 PKGS = vulkan
-DEPS := external/dryad external/kipcorn
-DRYAD_BACKEND = ALSA
-INC_FLAGS := -Iinclude
-DEP_LIBS = 
 
-#ASAN_FLAGS = -fsanitize=address -fno-omit-frame-pointer -g
-
-CFLAGS += ${ASAN_FLAGS}
-
-all: $(LIB_NAME)
-
-.PHONY: all clean sync-submodules print-pkgs
-
-external/dryad/libdryad.a: $(shell find external/dryad -type f \( -name "*.c" -o -name "*.h" -o -name "Makefile" \))
-	$(MAKE) -C external/dryad BACKEND=$(DRYAD_BACKEND)
-
-external/kipcorn/libkipcorn.a: $(shell find external/kipcorn -type f \( -name "*.c" -o -name "*.h" -o -name "Makefile" \))
-	$(MAKE) -C external/kipcorn
-
-SPECIFIED_GOALS := $(if $(MAKECMDGOALS),$(MAKECMDGOALS),all)
-
-ifneq ($(filter all $(LIB_NAME) test,$(SPECIFIED_GOALS)),)
-    $(foreach d,$(DEPS), \
-        $(eval DEP_LIBS += $(d)/lib$(notdir $(d)).a) \
-        $(eval PKGS += $(shell $(MAKE) -C $(d) -s print-pkgs)) \
-        $(eval RAW_INCS := $(shell $(MAKE) -C $(d) -s print-incs)) \
-        $(foreach i,$(RAW_INCS),$(eval INC_FLAGS += -I$(d)/$(i))) \
-    )
-endif
-
-CFLAGS += $(INC_FLAGS)
+SRCS := $(shell find modules -name '*.c')
+OBJS := $(SRCS:%.c=build/%.o)
 
 ifneq ($(PKGS),)
-    UNIQUE_PKGS := $(sort $(PKGS))
-    CFLAGS += $(shell pkg-config --cflags $(UNIQUE_PKGS))
+INC_FLAGS += $(shell pkg-config --cflags $(PKGS))
 endif
 
-SRCS = $(shell find modules -name "*.c")
-OBJS = $(SRCS:%.c=build/%.o)
+INC_FLAGS += $(shell $(MAKE) -s -C ../dryad print-incs)
+INC_FLAGS += $(shell $(MAKE) -s -C ../kipcorn print-incs)
 
-$(LIB_NAME): $(OBJS) $(DEP_LIBS)
-	@echo "Archiving $(LIB_NAME)..."
-	@ar rcs $@ $(OBJS)
+all: $(NAME)
+
+.PHONY: all clean deps sync-submodules print-libs print-incs
+
+../dryad/libdryad.a:
+	$(MAKE) -C ../dryad BACKEND=$(DRYAD_BACKEND)
+
+../kipcorn/libkipcorn.a:
+	$(MAKE) -C ../kipcorn KIPCORN_OPENGL=$(KIPCORN_OPENGL)
+
+deps: ../dryad/libdryad.a ../kipcorn/libkipcorn.a
+
+$(NAME): deps $(OBJS)
+	ar rcs $@ $(OBJS)
 
 build/%.o: %.c
 	@mkdir -p $(dir $@)
-	@echo "CC $<"
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-test: $(LIB_NAME)
-	$(CC) test.c $(CFLAGS) -L. -Lexternal/dryad -Lexternal/kipcorn -lozone -ldryad -lkipcorn $(shell pkg-config --libs $(sort $(PKGS))) -o ozone_test
+	$(CC) $(INC_FLAGS) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf build $(LIB_NAME)
-	@$(foreach d,$(DEPS), $(MAKE) -C $(d) clean;)
+	rm -rf build $(NAME)
+	$(MAKE) -C ../dryad clean
+	$(MAKE) -C ../kipcorn clean
 
 sync-submodules:
 	git submodule update --init --recursive --remote
 
-print-pkgs:
-	@echo $(sort $(PKGS))
+print-libs:
+	@echo $(abspath libozone.a) \
+	     $(abspath ../dryad/libdryad.a) \
+	     $(abspath ../kipcorn/libkipcorn.a) \
+	     $(shell pkg-config --libs $(PKGS))
+	@$(MAKE) -s -C ../dryad print-libs
+	@$(MAKE) -s -C ../kipcorn print-libs
 
--include $(OBJS:.o=.d)
+print-incs:
+	@for dir in $(INC_FLAGS); do \
+	    case $$dir in \
+	        -I*) echo -n "-I$(abspath $${dir#-I}) " ;; \
+	        *) echo -n "$$dir " ;; \
+	    esac; \
+	done
+	@echo
